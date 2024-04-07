@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ccnnx2vqpum26"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_efva7"]
+
+[resource]
+SpinBox/icons/updown = SubResource("ImageTexture_efva7")

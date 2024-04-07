@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv7g7w0bm08n2"]
+
+[ext_resource type="Script" path="res://addons/debug_parameters/DebugParameterRun.gd" id="1_0boq5"]
+[ext_resource type="PackedScene" uid="uid://b5kdabf2tbopp" path="res://addons/debug_parameters/DebugParametersDock.tscn" id="1_21ido"]
+
+[sub_resource type="Gradient" id="Gradient_uusxm"]
+colors = PackedColorArray(0.180392, 0.180392, 0.180392, 1, 0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_03h26"]
+gradient = SubResource("Gradient_uusxm")
+
+[node name="DebugParameterRun" type="Node2D"]
+z_index = 10
+script = ExtResource("1_0boq5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(79.5, 556)
+scale = Vector2(2.48438, 17.3125)
+texture = SubResource("GradientTexture2D_03h26")
+
+[node name="DebugParametersDock" parent="CanvasLayer" groups=["ingame_mode"] instance=ExtResource("1_21ido")]
+offset_right = 160.0
+offset_bottom = 1099.0
+
+[node name="FPSLabel" type="Label" parent="CanvasLayer"]
+offset_left = 166.0
+offset_top = 10.0
+offset_right = 206.0
+offset_bottom = 33.0
+text = "40 FPS"

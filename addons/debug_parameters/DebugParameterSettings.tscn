@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://disvknkynp33l"]
+
+[ext_resource type="Script" path="res://addons/debug_parameters/DebugParameterSettings.gd" id="1_qyb7l"]
+
+[node name="DebugParameterSettings" type="Panel"]
+custom_minimum_size = Vector2(150, 60)
+offset_right = 161.0
+offset_bottom = 65.0
+script = ExtResource("1_qyb7l")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 7.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HelpButton" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Quick tutorial"
+
+[node name="EnabledCheckBox" type="CheckBox" parent="GridContainer"]
+layout_mode = 2
+text = "Enable in game"

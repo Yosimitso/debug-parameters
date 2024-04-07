@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://xtjpd23s0vlu"]
+
+[ext_resource type="Script" path="res://addons/debug_parameters/TypeBlock/ParamBlockNumber.gd" id="1_1xx3i"]
+[ext_resource type="Theme" uid="uid://ccnnx2vqpum26" path="res://addons/debug_parameters/debug_parameters_theme.tres" id="2_5aw80"]
+[ext_resource type="PackedScene" uid="uid://dprnxwk3qea3l" path="res://addons/debug_parameters/TypeBlock/RemoveButton.tscn" id="2_owwgp"]
+[ext_resource type="PackedScene" uid="uid://bty1m8ffybpbm" path="res://addons/debug_parameters/TypeBlock/MoveUpButton.tscn" id="3_q10y2"]
+[ext_resource type="PackedScene" uid="uid://tmmg3y4geina" path="res://addons/debug_parameters/TypeBlock/MoveDownButton.tscn" id="4_fgb6j"]
+[ext_resource type="PackedScene" uid="uid://dnnfcpngj1gx5" path="res://addons/debug_parameters/WarningNotConnected.tscn" id="6_8s8pl"]
+[ext_resource type="PackedScene" uid="uid://y3tlaw1lljsn" path="res://addons/debug_parameters/TypeBlock/EditButton.tscn" id="7_hoba6"]
+
+[node name="ParamBlockNumber" type="Panel"]
+custom_minimum_size = Vector2(150, 80)
+offset_right = 152.0
+offset_bottom = 80.0
+script = ExtResource("1_1xx3i")
+
+[node name="SpinBox" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 27.0
+offset_right = 143.0
+offset_bottom = 58.0
+theme = ExtResource("2_5aw80")
+min_value = -1e+09
+max_value = 1e+09
+step = 0.0
+update_on_text_changed = true
+select_all_on_focus = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_right = 131.0
+offset_bottom = 26.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "test"
+horizontal_alignment = 1
+
+[node name="RemoveButton" parent="." instance=ExtResource("2_owwgp")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 20.0
+grow_horizontal = 0
+
+[node name="MoveUpButton" parent="." instance=ExtResource("3_q10y2")]
+layout_mode = 1
+
+[node name="MoveDownButton" parent="." instance=ExtResource("4_fgb6j")]
+layout_mode = 1
+
+[node name="WarningNotConnected" parent="." instance=ExtResource("6_8s8pl")]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 60.0
+offset_right = 23.0
+offset_bottom = 79.0
+
+[node name="EditButton" parent="." instance=ExtResource("7_hoba6")]
+layout_mode = 1

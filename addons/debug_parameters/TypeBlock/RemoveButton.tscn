@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dprnxwk3qea3l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08ph5"]
+bg_color = Color(0.431373, 0.0823529, 0.0823529, 1)
+
+[node name="RemoveButton" type="Button"]
+offset_left = 134.0
+offset_top = 1.0
+offset_right = 150.0
+offset_bottom = 21.0
+tooltip_text = "Remove"
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_08ph5")
+text = "X"

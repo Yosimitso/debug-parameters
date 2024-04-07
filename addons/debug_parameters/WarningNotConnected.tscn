@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnnfcpngj1gx5"]
+
+[ext_resource type="Texture2D" uid="uid://ckdcb6rii7qb2" path="res://addons/debug_parameters/assets/warning-icon.png" id="1_cq3hx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcfpy"]
+
+[node name="WarningNotConnected" type="Panel"]
+offset_right = 19.0
+offset_bottom = 18.0
+tooltip_text = "This parameter is not connected to any function. 
+Therefore your application won't be enable to detect in game modification.
+ See get_param_update_signal()"
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rcfpy")
+
+[node name="WarningNotConnected" type="Sprite2D" parent="."]
+position = Vector2(9, 9)
+scale = Vector2(0.03125, 0.03125)
+texture = ExtResource("1_cq3hx")

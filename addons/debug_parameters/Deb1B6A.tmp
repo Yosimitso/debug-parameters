@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5kdabf2tbopp"]
+
+[ext_resource type="Script" path="res://addons/debug_parameters/DebugParametersDock.gd" id="1_vosg6"]
+
+[node name="DebugParametersDock" type="ScrollContainer"]
+offset_right = 180.0
+offset_bottom = 1073.0
+script = ExtResource("1_vosg6")
+
+[node name="Params" type="GridContainer" parent="."]
+layout_mode = 2

@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkjmql2cefbbk"]
+
+[ext_resource type="Script" path="res://addons/debug_parameters/ProfileBlock.gd" id="1_pjr4x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qaaoi"]
+bg_color = Color(0.47451, 0.313726, 0.196078, 1)
+
+[node name="ProfileBlock" type="Panel"]
+custom_minimum_size = Vector2(150, 100)
+offset_right = 150.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qaaoi")
+script = ExtResource("1_pjr4x")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 140.0
+offset_bottom = 95.0
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "Profiles"
+
+[node name="ProfilesItemList" type="OptionButton" parent="GridContainer"]
+custom_minimum_size = Vector2(130, 30)
+layout_mode = 2
+text_overrun_behavior = 3
+clip_text = true
+item_count = 4
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Checkbox"
+popup/item_0/id = 0
+popup/item_1/text = "Text"
+popup/item_1/id = 1
+popup/item_2/text = "Number"
+popup/item_2/id = 2
+popup/item_3/text = "List"
+popup/item_3/id = 3
+
+[node name="GridContainer" type="GridContainer" parent="GridContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="CreateButton" type="Button" parent="GridContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "✛ Add"
+
+[node name="RenameButton" type="Button" parent="GridContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "✎ Edit"
+
+[node name="DeleteButton" type="Button" parent="GridContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "⤫ Delete"

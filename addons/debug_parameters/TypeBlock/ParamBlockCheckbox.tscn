@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://11d82m744lal"]
+
+[ext_resource type="Script" path="res://addons/debug_parameters/TypeBlock/ParamBlockCheckbox.gd" id="1_wuf41"]
+[ext_resource type="PackedScene" uid="uid://dprnxwk3qea3l" path="res://addons/debug_parameters/TypeBlock/RemoveButton.tscn" id="2_ugx8a"]
+[ext_resource type="PackedScene" uid="uid://bty1m8ffybpbm" path="res://addons/debug_parameters/TypeBlock/MoveUpButton.tscn" id="3_dbmch"]
+[ext_resource type="PackedScene" uid="uid://tmmg3y4geina" path="res://addons/debug_parameters/TypeBlock/MoveDownButton.tscn" id="4_2vvoc"]
+[ext_resource type="PackedScene" uid="uid://dnnfcpngj1gx5" path="res://addons/debug_parameters/WarningNotConnected.tscn" id="5_w4q0k"]
+[ext_resource type="PackedScene" uid="uid://y3tlaw1lljsn" path="res://addons/debug_parameters/TypeBlock/EditButton.tscn" id="6_3da2p"]
+
+[node name="ParamBlockCheckbox" type="Panel"]
+custom_minimum_size = Vector2(150, 50)
+offset_right = 150.0
+offset_bottom = 34.0
+script = ExtResource("1_wuf41")
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 144.0
+offset_bottom = 42.0
+text = "Checkbox"
+
+[node name="RemoveButton" parent="." instance=ExtResource("2_ugx8a")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 20.0
+grow_horizontal = 0
+
+[node name="MoveUpButton" parent="." instance=ExtResource("3_dbmch")]
+layout_mode = 1
+
+[node name="MoveDownButton" parent="." instance=ExtResource("4_2vvoc")]
+layout_mode = 1
+
+[node name="WarningNotConnected" parent="." instance=ExtResource("5_w4q0k")]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 30.0
+offset_right = 22.0
+offset_bottom = 48.0
+
+[node name="EditButton" parent="." instance=ExtResource("6_3da2p")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 101.0
+offset_top = 30.0
+offset_right = 117.0
+offset_bottom = 50.0
+grow_horizontal = 1
+grow_vertical = 1

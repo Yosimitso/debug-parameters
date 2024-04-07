@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://c815muq5sebnn"]
+
+[ext_resource type="Script" path="res://addons/debug_parameters/TypeBlock/ParamBlockList.gd" id="1_nj5cj"]
+[ext_resource type="PackedScene" uid="uid://dprnxwk3qea3l" path="res://addons/debug_parameters/TypeBlock/RemoveButton.tscn" id="2_bt623"]
+[ext_resource type="PackedScene" uid="uid://bty1m8ffybpbm" path="res://addons/debug_parameters/TypeBlock/MoveUpButton.tscn" id="3_37rrx"]
+[ext_resource type="PackedScene" uid="uid://tmmg3y4geina" path="res://addons/debug_parameters/TypeBlock/MoveDownButton.tscn" id="4_giw6k"]
+[ext_resource type="PackedScene" uid="uid://dnnfcpngj1gx5" path="res://addons/debug_parameters/WarningNotConnected.tscn" id="5_155x8"]
+[ext_resource type="PackedScene" uid="uid://y3tlaw1lljsn" path="res://addons/debug_parameters/TypeBlock/EditButton.tscn" id="6_f3lwh"]
+
+[node name="ParamBlockList" type="Panel"]
+custom_minimum_size = Vector2(150, 80)
+offset_right = 150.0
+offset_bottom = 34.0
+script = ExtResource("1_nj5cj")
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 23.0
+offset_right = 144.0
+offset_bottom = 58.0
+text_overrun_behavior = 3
+clip_text = true
+fit_to_longest_item = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 130.0
+offset_bottom = 26.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "test"
+horizontal_alignment = 1
+
+[node name="RemoveButton" parent="." instance=ExtResource("2_bt623")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 20.0
+grow_horizontal = 0
+
+[node name="MoveUpButton" parent="." instance=ExtResource("3_37rrx")]
+layout_mode = 1
+
+[node name="MoveDownButton" parent="." instance=ExtResource("4_giw6k")]
+layout_mode = 1
+
+[node name="WarningNotConnected" parent="." instance=ExtResource("5_155x8")]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 60.0
+offset_right = 23.0
+offset_bottom = 79.0
+
+[node name="EditButton" parent="." instance=ExtResource("6_f3lwh")]
+layout_mode = 1

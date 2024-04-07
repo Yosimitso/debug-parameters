@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://d00ymnbi5t0eb"]
+
+[ext_resource type="Script" path="res://addons/debug_parameters/Help.gd" id="1_62b0e"]
+
+[node name="Help" type="Window"]
+title = "Create a Profile"
+initial_position = 1
+size = Vector2i(700, 500)
+transient = true
+script = ExtResource("1_62b0e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 200.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Example to get the values :"
+
+[node name="CodeEdit" type="CodeEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+
+[node name="ValidButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+text = "OK"
