@@ -1,3 +1,5 @@
+![alt text](https://github.com/Yosimitso/debug-parameters/blob/master/addons/debug_parameters/example_1.png?raw=true)
+
 An editor and in game panel to test your game with different parameters
 
 A Godot 4 GDScript plugin
