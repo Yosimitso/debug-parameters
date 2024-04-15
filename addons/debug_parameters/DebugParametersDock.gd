@@ -66,12 +66,12 @@ func get_profile(index: int) -> DebugParameterProfile:
 	return profiles[index]
 
 func _ready():
-	add_param_block = preload('res://addons/debug_parameters/AddParamBlock.tscn').instantiate()
+	add_param_block = preload('AddParamBlock.tscn').instantiate()
 	add_param_block.add_setting.connect(add_setting)
 	add_param_block.edit_setting.connect(edit_setting)
 	add_param_block.cancel_edit.connect(cancel_edit)
 	
-	profile_block = preload('res://addons/debug_parameters/ProfileBlock.tscn').instantiate()
+	profile_block = preload('ProfileBlock.tscn').instantiate()
 	profile_block.on_select_profile.connect(load_profile)
 	profile_block.on_create_profile.connect(create_profile)
 	profile_block.on_rename_profile.connect(rename_profile)
@@ -80,7 +80,7 @@ func _ready():
 	
 	if profiles.size() == 0:
 		create_profile('global')
-	settings_block = preload('res://addons/debug_parameters/DebugParameterSettings.tscn').instantiate()
+	settings_block = preload('DebugParameterSettings.tscn').instantiate()
 	settings_block.load_data(settings_raw.get_data()['settings'])
 	ingame_mode = is_in_group("ingame_mode")
 	refresh()
@@ -101,19 +101,19 @@ func refresh():
 			var node
 			match param.get_type():
 				DebugParameterHelper.TYPE_CHECKBOX:
-					node = preload("res://addons/debug_parameters/TypeBlock/ParamBlockCheckbox.tscn").instantiate()
+					node = preload("TypeBlock/ParamBlockCheckbox.tscn").instantiate()
 					node.init(param.get_label(), param.get_tooltip(), param.get_value())
 				DebugParameterHelper.TYPE_TEXT:
-					node = preload("res://addons/debug_parameters/TypeBlock/ParamBlockText.tscn").instantiate()
+					node = preload("TypeBlock/ParamBlockText.tscn").instantiate()
 					node.init(param.get_label(), param.get_tooltip(), param.get_value())
 				DebugParameterHelper.TYPE_NUMBER:
-					node = preload("res://addons/debug_parameters/TypeBlock/ParamBlockNumber.tscn").instantiate()
+					node = preload("TypeBlock/ParamBlockNumber.tscn").instantiate()
 					node.init(param.get_label(), param.get_tooltip(), DebugParameterHelper.generate_conf(param), param.get_value())
 				DebugParameterHelper.TYPE_LIST:
-					node = preload("res://addons/debug_parameters/TypeBlock/ParamBlockList.tscn").instantiate()
+					node = preload("TypeBlock/ParamBlockList.tscn").instantiate()
 					node.init(param.get_label(), param.get_tooltip(), param.get_config()['available_values'], param.get_value())
 				DebugParameterHelper.TYPE_BUTTON:
-					node = preload("res://addons/debug_parameters/TypeBlock/ParamBlockButton.tscn").instantiate()
+					node = preload("TypeBlock/ParamBlockButton.tscn").instantiate()
 					node.init(param.get_label(), param.get_tooltip())
 				_:
 					push_error(str(param.get_type())+' not handled')
@@ -185,10 +185,23 @@ func save_settings():
 func get_settings_file(write_and_truncate = false) -> FileAccess:
 	var file_name = 'debug_parameters_settings'
 	var file_path = "user://"+file_name+".json"
+	if not FileAccess.file_exists(file_path):
+		initialize_plugin(file_path)
 	var file = FileAccess.open(file_path, FileAccess.WRITE_READ if write_and_truncate else FileAccess.READ)
 	if not file:
 		push_error("Can't "+("create" if write_and_truncate else "open")+" file : "+file_path)
 	return file
 
+func initialize_plugin(file_path: String):
+	print("Initialize plugin")
+	if not FileAccess.file_exists(file_path):
+		var file_creation = FileAccess.open(file_path, FileAccess.WRITE_READ)
+		file_creation.close()
+		settings_block = preload('DebugParameterSettings.tscn').instantiate()
+		var global_profile = DebugParameterProfile.new('global')
+		profiles.append(global_profile)
+		current_profile_index = 0
+		save_settings()
+		
 func is_enabled() -> bool:
 	return settings_block.is_enabled()

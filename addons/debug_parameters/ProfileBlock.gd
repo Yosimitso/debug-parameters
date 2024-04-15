@@ -29,7 +29,7 @@ func profile_selected(index):
 	on_select_profile.emit(index)
 
 func launch_create_profile():
-	var popup = preload('res://addons/debug_parameters/EditProfile.tscn').instantiate()
+	var popup = preload('EditProfile.tscn').instantiate()
 	add_child(popup)
 	popup.on_close.connect(cancel_create_profile)
 	popup.on_validate.connect(create_profile)
@@ -42,7 +42,7 @@ func create_profile(profile_name, popup):
 	remove_child(popup)
 
 func ask_rename_profile():
-	var popup = preload('res://addons/debug_parameters/EditProfile.tscn').instantiate()
+	var popup = preload('EditProfile.tscn').instantiate()
 	add_child(popup)
 	popup.on_close.connect(cancel_create_profile)
 	popup.on_validate.connect(rename_profile)

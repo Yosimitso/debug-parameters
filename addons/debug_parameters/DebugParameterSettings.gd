@@ -15,7 +15,7 @@ func set_profile(_profile: DebugParameterProfile, _in_game_mode: bool):
 	$GridContainer.set_visible(!in_game_mode)
 	
 func help():
-	var popup = preload('res://addons/debug_parameters/Help.tscn').instantiate()
+	var popup = preload('Help.tscn').instantiate()
 	add_child(popup)
 	popup.set_profile(profile)
 	popup.on_close.connect(close_popup)

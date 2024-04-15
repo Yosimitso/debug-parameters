@@ -12,10 +12,9 @@ signal on_new_param_connection()
 func _ready():
 	regex = RegEx.new()
 	regex.compile("([A-z]+)(\\.|::)([A-z]+)\\(([A-z]*)\\)")
-	panel = preload('res://addons/debug_parameters/DebugParameterRun.tscn').instantiate()
-	#panel.destroyed.connect(func(): enabled = false)
+	panel = preload('DebugParameterRun.tscn').instantiate()
 	add_child(panel)
-	enabled = get_param_value("debug_enabled")
+	enabled = get_setting_param('enabled')
 
 """start public functions"""
 
@@ -34,9 +33,6 @@ func disable():
 		
 """Get a param value"""
 func get_param_value(slug: String) -> Variant:
-#	if not is_enabled():
-#		#push_warning("Debug Parameters is disabled")
-#		return
 	return get_value_for_build(get_param(slug))
 
 """Shortcut for get_param_value()"""
@@ -48,11 +44,7 @@ func set_param_value(slug: String, value):
 	get_param(slug).set_value(value)
 
 """Called from in game code to get update of a parameter's value"""	
-func get_param_update_signal(slug: String) -> Signal:
-#	if not is_enabled():
-#		#push_warning("Debug Parameters is disabled")
-#		return Signal()
-		
+func get_param_update_signal(slug: String) -> Signal:	
 	var param
 	
 	for profile_param in get_current_params():
@@ -126,3 +118,6 @@ func get_current_params():
 	var params = get_dock().get_profile(0).get_params().duplicate(true) # GLOBAL PROFILE
 	params.append_array(get_dock().get_current_profile().get_params().duplicate(true)) # CURRENT PROFILE
 	return params
+
+func get_setting_param(slug: String):
+	return get_dock().settings_raw.get_data()['settings'][slug]

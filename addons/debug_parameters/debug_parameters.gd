@@ -7,9 +7,9 @@ var detect_changes_timer : Timer
 var editor_plugin: EditorPlugin
 
 func _enter_tree():
-	dock = preload("res://addons/debug_parameters/DebugParametersDock.tscn").instantiate()
+	dock = preload("DebugParametersDock.tscn").instantiate()
 	add_control_to_dock(DOCK_SLOT_LEFT_UL, dock)
-	add_autoload_singleton(AUTOLOAD_NAME, "res://addons/debug_parameters/DebugParameters.gd")
+	add_autoload_singleton(AUTOLOAD_NAME, "DebugParameters.gd")
 	detect_changes_timer = Timer.new()
 	detect_changes_timer.autostart = false
 	detect_changes_timer.one_shot = false
@@ -27,7 +27,7 @@ func _build():
 
 func detect_changes():
 	if not editor_plugin.get_editor_interface().is_playing_scene():
-		print('reload profiles')
+		print('Reload profiles')
 		detect_changes_timer.stop()
 		dock.load_profiles()
 		dock.refresh()
